@@ -47,6 +47,10 @@ func main() {
 		renderTemplate(w, "apropos", nil)
 	})
 
+	http.HandleFunc("/mentions-legales", func(w http.ResponseWriter, r *http.Request) {
+		renderTemplate(w, "mentions-legales", nil)
+	})
+
 	http.HandleFunc("/SeConnecter", func(w http.ResponseWriter, r *http.Request) {
 		if r.Method == http.MethodPost {
 			forum.CheckCredentialsForConnection(w, r)

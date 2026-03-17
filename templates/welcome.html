@@ -36,33 +36,41 @@
             <img src="static/img/menu-black.png" alt="menu">
         </button>
 
-        <!-- Navigation -->
-        <ul class="meta-ul">
-            <li class="meta-navigation">
-                <a class="meta-a" href="/mytripy-non">MyTripy</a>
-            </li>
+    </header>
 
-            <li class="meta-navigation">
-                <a class="meta-a" href="/destinations">Destinations</a>
-            </li>
 
-            <li class="meta-navigation">
-                <a class="meta-a" href="/contact">Contactez-nous</a>
-            </li>
-            {{if $.IsConnected}}
-            <li class="meta-navigation-btn-connexion">
-                <a class="btn" href="/profil">Mon Compte</a>
-            </li>
-            {{else}}
-            <li class="meta-navigation-btn-seconnecter">
-                <a class="btn" href="/SeConnecter">Se connecter</a>
-            </li>
+    <ul class="meta-ul">
+        <li class="meta-navigation">
+            <a class="meta-a" href="/mytripy-non">MyTripy</a>
+        </li>
 
-            <li class="meta-navigation-btn-creer-compte">
-                <a class="btn" href="/CreerCompte">Créer mon compte</a>
-            </li>
-            {{end}}
-        </ul>
+        <li class="meta-navigation">
+            <a class="meta-a" href="/destinations">Destinations</a>
+        </li>
+
+        <li class="meta-navigation">
+            <a class="meta-a" href="/contact">Contactez-nous</a>
+        </li>
+
+        {{if .IsConnected}}
+
+        <li class="meta-navigation-btn-connexion">
+            <a class="btn" href="/profil">Mon Compte</a>
+        </li>
+
+        {{else}}
+
+        <li class="meta-navigation-btn-connexion">
+            <a class="btn" href="/SeConnecter">Se connecter</a>
+        </li>
+
+        <li class="meta-navigation-btn-creer-compte">
+            <a class="btn" href="/CreerCompte">Créer mon compte</a>
+        </li>
+
+        {{end}}
+
+    </ul>
 
     </header>
 
@@ -93,19 +101,22 @@
                 <p class="discussion-cree-descriptif">{{.MainChat.Descri}}</p>
 
                 <div class="discussion-cree-chat">
-                    <img src="static/img/messager.png" alt="discussion">
-                    <p>{{.MainChat.MessageCount}}</p>
-                </div>
-                {{if $.IsConnected}}
-                <div class="chat-coeur-container" data-chat="{{.MainChat.Name}}">
-                    {{if .MainChat.UserLiked}}
-                    <img src="static/img/coeur_rouge.png" alt="Liked" class="chat-coeur">
-                    {{else}}
-                    <img src="static/img/coeur.png" alt="Like" class="chat-coeur">
-                    {{end}}
+                        {{if $.IsConnected}}
+                        <div class="chat-coeur-container" data-chat="{{.MainChat.Name}}">
+                            {{if .MainChat.Liked}}
+                                <img src="static/img/coeur_rouge.png" alt="Liked" class="chat-coeur">
+                            {{else}}
+                                <img src="static/img/coeurGris.png" alt="Like" class="chat-coeur">
+                            {{end}}
+                            <p>{{.MainChat.TotalLikes}} Likes</p>
+                        </div>
+                        {{end}}
+                    <div class="discussionFil">
+                        <img src="static/img/messager.png" alt="discussion">
+                        <p>{{.MainChat.MessageCount}}</p>
+                    </div>
                 </div>
                 {{end}}
-                <p>{{.MainChat.TotalLikes}} Likes</p>
             </div>
         </div>
 
@@ -114,7 +125,7 @@
         </div>
         <div class="popupAjouterFil" id="popupAjouterFil">
             <img src="/static/img/fondPopupFil.png">
-            <h3>Nouveau Fils</h3>
+            <h3>Nouveau Fil</h3>
             <input id="chatTitle" placeholder="Entrez le Titre de votre nouveau Fil" class="nomFil" required>
             <input id="chatDescription" placeholder="Entrez la Description de votre nouveau Fil" class="descriptionFil"
                 required>
@@ -157,24 +168,28 @@
 
                 <p class="discussion-cree-descriptif">{{.Descri}}</p>
 
-                <div class="discussion-cree-chat">
-                    <img src="static/img/messager.png" alt="discussion">
-                    <p>{{.MessageCount}}</p>
-                </div>
 
-                {{if $.IsConnected}}
-                <div class="chat-coeur-container" data-chat="{{.Name}}">
-                    {{if .UserLiked}}
-                    <img src="static/img/coeur_rouge.png" alt="Liked" class="chat-coeur">
-                    {{else}}
-                    <img src="static/img/coeur.png" alt="Like" class="chat-coeur">
+
+                <div class="discussion-cree-chat">
+                    {{if $.IsConnected}}
+                        <div class="chat-coeur-container" data-chat="{{.Name}}">
+                        {{if .Liked}}
+                            <img src="static/img/coeur_rouge.png" alt="Liked" class="chat-coeur">
+                        {{else}}
+                            <img src="static/img/coeurGris.png" alt="Like" class="chat-coeur">
+                        {{end}}
+                        <p>{{.TotalLikes}} Likes</p>
+                        </div>
                     {{end}}
+                    <div class="discussionFil">
+                        <img src="static/img/messager.png" alt="discussion">
+                        <p>{{.MessageCount}}</p>
+                    </div>
                 </div>
                 {{end}}
-                <p>{{.TotalLikes}} Likes</p>
             </div>
             {{else}}
-            <p>Aucun chat n'a encore été créé dans {{.Region}}. Créé en un maintenant!</p>
+            <p>Aucun chat personnalisé n'a encore été créé dans {{.Region}}. Créé en un maintenant!</p>
             {{end}}
         </div>
 

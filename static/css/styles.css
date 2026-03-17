@@ -1441,7 +1441,7 @@ section h2 {
     margin-left: auto;
     margin-right: auto;
     width: 80% !important;
-    top : 43%;
+    top : 41%;
     font-weight: bold;
     font-family: "Open Sans", sans-serif !important;
 }
@@ -1449,7 +1449,7 @@ section h2 {
 .paramFil {
     display: flex;
     flex-wrap: wrap;
-    top:62%;
+    top:59%;
     width: 80%;
     gap : 3%;
     align-items: center;
@@ -1481,7 +1481,7 @@ section h2 {
 }
 
 .popupAjouterFil button{
-    top:77%;
+    top:73%;
     padding: 2%;
     margin-top: 2%;
     width: 48%;
@@ -1612,12 +1612,11 @@ section h2 {
 .discussion-cree-chat {
     display: flex;
     align-items: center;
-    justify-content: flex-end; /* aligne le contenu à droite */
+    justify-content: flex-end;
     margin-top: 10px;
     gap: 4px;
-    border: #777 1px solid;
-    border-radius: 25px;
     padding: 5px;
+    padding-left: 0px;
 }
 
 .discussion-cree-chat img {
@@ -1630,7 +1629,29 @@ section h2 {
     color: #777;
 }
 
+.chat-coeur-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 4px;
+    border: #777 1px solid;
+    border-radius: 25px;
+    padding: 6px;
+}
 
+.discussionFil {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 4px;
+    border: #777 1px solid;
+    border-radius: 25px;
+    padding: 6px;
+}
+
+.chat-coeur-container.active {
+    background-color: #fff;
+}
 
 
 
@@ -2043,31 +2064,6 @@ section h2 {
   .dropdown-item:hover {
     background-color: #f0f0f0;
   }
-
-  .chat-coeur-container {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    width: 35px;
-    height: 35px;
-    padding: 9px;
-    background-color: white;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-}
-
-.chat-coeur {
-    width: 17px;
-    height: 17px;
-}
-
-.chat-coeur-container.active {
-    background-color: #fff;
-}
 
 
 .msg-like{

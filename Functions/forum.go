@@ -146,12 +146,6 @@ func CreateUser(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	emailChiffre, err := bcrypt.GenerateFromPassword([]byte(email), bcrypt.DefaultCost)
-	if err != nil {
-		renderError(w, "CreerCompte", "Erreur lors du chiffrement de l'email.")
-		return
-	}
-
 	// Utilisez l'URL de l'avatar choisi ou une URL de photo par défaut
 	if photoURL == "" {
 		photoURL = "static/img/avatar/avatarFemme1.png"
@@ -161,7 +155,7 @@ func CreateUser(w http.ResponseWriter, r *http.Request) {
 
 	biographie := ""
 
-	_, err = db.Exec("INSERT INTO User (USERNAME, PASSWORD, EMAIL, PHOTO_URL, BIOGRAPHY) VALUES (?, ?, ?, ?, ?)", pseudo, motDePasseChiffre, emailChiffre, photoURL, biographie)
+	_, err = db.Exec("INSERT INTO User (USERNAME, PASSWORD, EMAIL, PHOTO_URL, BIOGRAPHY) VALUES (?, ?, ?, ?, ?)", pseudo, motDePasseChiffre, email, photoURL, biographie)
 	if err != nil {
 		renderError(w, "CreerCompte", "Erreur lors de la création du compte.")
 		return
