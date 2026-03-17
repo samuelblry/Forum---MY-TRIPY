@@ -4,6 +4,10 @@ Un forum collaboratif dédié à l'exploration et au partage d'expériences sur 
 
 ---
 
+## 📷 Présentation
+
+![](mytripy.gif)
+
 ## 👥 Projet de groupe
 
 **MyTripy** a été conçu et développé dans le cadre d'un **projet de groupe collaboratif**. L'objectif était de créer une application web complète, de la base de données au front-end, en passant par le back-end, tout en gérant le travail en équipe.
